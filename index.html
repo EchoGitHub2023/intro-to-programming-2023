@@ -55,12 +55,18 @@
 
         <section>
             <h2>Leave a Message</h2>
-            <form name="leave_message">
-                <label>Name</label><br /><input type="text" name="userName" required /><br />
-                <label>Email</label><br /><input type="email" name="userEmail" required /><br />
-                <label>Message</label><br /><textarea name="userMessage" required></textarea><br />
+            <!-- I can use id and class for form, which makes it much easier to select for DOM manipulation: getElementById or getElementsByClass -->
+            <form id="leave_message">
+                <label for="userName">Name</label><br /><input type="text" name="userName" required /><br />
+                <label for="userEmail">Email</label><br /><input type="email" name="userEmail" required /><br />
+                <label for="userMessage">Message</label><br /><textarea name="userMessage" required></textarea><br />
                 <button type="submit">Submit</button>
             </form>
+        </section>
+
+        <section id="messages">
+            <h2>Messages</h2>
+            <ul></ul>
         </section>
 
     </main>
