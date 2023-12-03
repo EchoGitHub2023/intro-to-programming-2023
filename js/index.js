@@ -18,7 +18,7 @@ for( let i=0 ; i<skillsArr.length ; i++ ){
 }
 
 //  "leave_message" is what I will be adding things to, using DOM manipulation, so I select the form first.
-const messageForm = document.getElementById("leave_message");
+const messageForm = document.getElementById("message_form");
 
 //  addEventListener() There is no "=" equal sign for the method.
 messageForm.addEventListener("submit", (eSubmitMessage) => {
@@ -32,7 +32,7 @@ messageForm.addEventListener("submit", (eSubmitMessage) => {
     // console.log(userName, userEmail, userMessage);
  
     // select the empty <ul></ul> under "Messages" of html; and then create & add <li> into that <ul>
-    const messageList = document.getElementById("messages").querySelector("ul");
+    const messageList = document.getElementById("message_post").querySelector("ul");
     const newMessage = document.createElement("li");
 
     // display the messages in a list.
@@ -45,6 +45,7 @@ messageForm.addEventListener("submit", (eSubmitMessage) => {
     messageList.appendChild(newMessage);
 
     // reset the form back to blank.
+    // the .reset function is for form.  I need to select <form>, not <section>, for it to work.
     messageForm.reset();
 
     // make "remove" button.

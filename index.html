@@ -7,44 +7,43 @@
         Echo's Portfolio
     </title>
     <meta charset=”utf-8″>
+    <link rel="stylesheet" href="css/index.css"
 </head>
 
 <body>
     <section>
         <header>
-            <h1>Echo Wang</h1>
+            <div id="wang">Echo Wang</div>
             <p>The beginning of my journey to code</p>
-            <nav>
-                <ul>
-                    <li>About</li>
-                    <li>Experience</li>
-                    <li>Connect</li>
-                </ul>
+            <nav class="tabs">
+                <a class="tabs" href="#about">About</a>
+                <a class="tabs" href="#experience">Experience</a>
+                <a class="tabs" href="#connect">Connect</a>
             </nav>
         </header>
     </section>
 
     <main>
 
-        <section>
-            <h1>About</h1>
+        <section id="about">
+            <h2>About</h2>
             <p>First generation Taiwanese American immigrant, proud of my heritage and excited about the future prospect.</p>
             <p>Trying my hands on programming.</p>
         </section>
 
-        <section>
-            <h1>Experience</h1>
+        <section class="competence" id="experience">
+            <h2>Experience</h2>
             <p>NOLA -whole new adventure</p>
             <p>Tassajara -spiritual development</p>
             <p>Tzuchi -love the world, love thy neighbour as thyself</p>
         </section>
-
-        <section id="skills"><h2>Skills</h2>
+        
+        <section class="competence" id="skills"><h2>Skills</h2>
             <ul></ul>
         </section>
 
-        <section>
-            <h1>Connect</h1>
+        <section id="connect">
+            <h2>Connect</h2>
             <ul>
             <li><strong>Email</strong></li>
             <a href="#">ewang77@ymail.com</a>
@@ -54,9 +53,9 @@
         </section>
 
         <section>
-            <h2>Leave a Message</h2>
+            <h2 id="leave_a_message">Leave a Message</h2>
             <!-- I can use id and class for form, which makes it much easier to select for DOM manipulation: getElementById or getElementsByClass -->
-            <form id="leave_message">
+            <form  id="message_form">
                 <label for="userName">Name</label><br /><input type="text" name="userName" required /><br />
                 <label for="userEmail">Email</label><br /><input type="email" name="userEmail" required /><br />
                 <label for="userMessage">Message</label><br /><textarea name="userMessage" required></textarea><br />
@@ -64,7 +63,7 @@
             </form>
         </section>
 
-        <section id="messages">
+        <section id="message_post">
             <h2>Messages</h2>
             <ul></ul>
         </section>
@@ -92,7 +91,7 @@
             </div>
             <div>
             
-            <a href="#">ewang77@ymail.com</a>
+            <a id="footer_email" href="#">ewang77@ymail.com</a>
             <p id="copyright"></p>
             </div>
         </footer>
