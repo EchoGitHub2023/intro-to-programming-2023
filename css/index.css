@@ -1,4 +1,5 @@
 body{
+    margin: 0px;
     background:
         repeating-linear-gradient(transparent, rgb(3, 70, 20) 20px),
         repeating-linear-gradient(0.15turn, rgb(3, 70, 20), rgb(60, 100, 20), rgb(20, 60, 110) 40px);
@@ -11,7 +12,7 @@ main{
     margin-bottom: .6rem;
     padding: 20px,0,20px,0;
 }
-header{
+header, footer{
     background-color: rgb(30, 100, 140);
     padding: 1.5rem;
     font: 1rem "helvetica";
@@ -30,10 +31,6 @@ header p{
     background-color: black;
     color: white;
 }
-footer{
-    background-color: rgb(30, 100, 140);
-    font: 1rem "helvetica";
-}
 footer p{
     color: white;
 }
@@ -49,7 +46,6 @@ footer #copyright {
     font: .6rem "helvetica";
     text-align: center;
 }
-
 aside{
     border-radius: 40px;
     padding: 30px;
@@ -57,42 +53,22 @@ aside{
     font: .8rem "helvetica";
     color: white;
 }
-
-#about{
+#about, #connect{
     border-radius: 30px 30px 100px 70px;
     padding: 20px 100px 30px 60px;
     background-color: rgb(120, 5, 120);
     box-shadow: 10px 5px 20px rgb(10,110,30);
     margin: 20px;
 }
-#experience{
+#experience, #skills{
     /* display: flex; */
     border-radius: 30px 30px 100px 70px;
     padding: 20px 100px 30px 60px;
-    background-color: rgb(10,110,30); 
+    background-color: rgb(10,150,70); 
     box-shadow: 10px 5px 20px rgb(10,110,30);
     margin: 20px;
 }
-#skills{
-    /* display: flex; */
-    border-radius: 30px 30px 100px 70px;
-    padding: 20px 100px 30px 60px;
-    background-color: rgb(10,150,70);
-    box-shadow: 10px 5px 20px rgb(10,110,30);
-    margin: 20px;
-}
-#connect{
-    border-radius: 30px 30px 100px 70px;
-    padding: 20px 100px 30px 60px;
-    background-color: rgb(120, 5, 120);
-    box-shadow: 10px 5px 20px rgb(10,110,30);
-    margin: 20px;
-}
-
-#leave_a_message{
-    border: .2rem solid rgb(240,190,20);
-}
-#message_form{
+#message_form, #message_post{
     border-radius: 30px 30px 100px 70px;
     padding: 20px 100px 30px 60px;
     background-color: rgb(240,190,20);
@@ -101,16 +77,6 @@ aside{
     color: rgb(100,0,130);
     margin: 20px;
 }
-#message_post{
-    border-radius: 30px 30px 100px 70px;
-    padding: 20px 100px 30px 60px;
-    background-color: rgb(255,255,0); 
-    box-shadow: 10px 5px 20px rgb(10,110,30);
-    font: bold 1.2rem Comic sans MS;
-    color: rgb(100,0,130);
-    margin: 20px;
-}
-
 #message_form input{
     background-color: rgb(100,0,130);
     font: bold "Comic Sans MS";
