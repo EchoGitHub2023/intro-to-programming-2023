@@ -37,7 +37,7 @@ messageForm.addEventListener("submit", (eSubmitMessage) => {
 
     // display the messages in a list.
     newMessage.innerHTML = `
-      <a href = "mailto: userEmail">${userName}</a>
+      <a href="mailto:#userEmail.value">${userName}</a>
       <span>wrote: ${userMessage}</span>`;
       // console.log(messageList);
 
