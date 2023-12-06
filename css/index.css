@@ -1,3 +1,6 @@
+*{
+    box-sizing: borer-box;
+}
 body{
     margin: 0px;
     background:
@@ -5,9 +8,11 @@ body{
         repeating-linear-gradient(0.15turn, rgb(3, 70, 20), rgb(60, 100, 20), rgb(20, 60, 110) 40px);
     width: 100%;
     font-family: sans-serif;
+    color: rgb(250,245,5)
 }
 main{
     width: 80%;
+    max-width: 1000px;
     margin-left: 10%;
     margin-bottom: .6rem;
     padding: 20px,0,20px,0;
@@ -26,27 +31,34 @@ header p{
     color: white;
 }
 .tabs{
-    display: flex;
-    padding: .5rem;
+    /* display: flex; */
+    display: inline-block;
+    width: 120px;
+    height: 40px;
+    text-align: center;
+    /* make the text center vertically in each inline-block */
     background-color: black;
-    color: white;
-}
-footer p{
     color: white;
 }
 footer q{
     color: rgb(240,160,200);
 }
-footer #footer_email{
-    color: white;
+#footer_email{
+    display: block;
     text-decoration: none;
+}
+#footer_email, #copyright{
+    color: white;
+    font: .8rem "helvetica";
     text-align: center;
 }
-footer #copyright {
-    font: .6rem "helvetica";
-    text-align: center;
-}
+
 aside{
+    width: 20%;
+    min-width: 100px; 
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
     border-radius: 40px;
     padding: 30px;
     background-color: rgb(20, 60, 110);
@@ -147,13 +159,4 @@ h2{
     font: bold 2rem, sans-serif;
     color: white;
     margin-bottom: .3rem;
-}
-p{
-    color: rgb(250,245,5)
-}
-ul{
-    color: rgb(250,245,5)
-}
-ol{
-    color: rgb(250,245,5)
 }
