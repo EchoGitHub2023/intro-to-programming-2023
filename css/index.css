@@ -175,6 +175,9 @@ h2{
     aside{
         border-radius: 15px;
         padding: 15px;
+        position: relative;
+        width: 60%;
+        margin: 15% 5% 5% 15%;
     }
 }
 
