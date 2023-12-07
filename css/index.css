@@ -1,0 +1,198 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0px;
+    background:
+        repeating-linear-gradient(transparent, rgb(3, 70, 20) 20px),
+        repeating-linear-gradient(0.15turn, rgb(3, 70, 20), rgb(60, 100, 20), rgb(20, 60, 110) 40px);
+    width: 100%;
+    font-family: sans-serif;
+    color: rgb(250,245,5)
+}
+main{
+    width: 80%;
+    max-width: 1000px;
+    margin-left: 10%;
+    margin-bottom: .6rem;
+    padding: 20px,0,20px,0;
+}
+header, footer{
+    background-color: rgb(30, 100, 140);
+    padding: 1.5rem;
+    font: 1rem "helvetica";
+}
+#wang{
+    color: rgb(240,160,200);
+    font-size: 3rem;
+    font-weight: bolder;
+}
+header p{
+    color: white;
+}
+.tabs{
+    /* display: flex; */
+    display: inline-block;
+    width: 120px;
+    height: 40px;
+    text-align: center;
+    /* make the text center vertically in each inline-block */
+    background-color: black;
+    color: white;
+}
+footer q{
+    color: rgb(240,160,200);
+}
+#footer_email{
+    display: block;
+    text-decoration: none;
+}
+#footer_email, #copyright{
+    color: white;
+    font: .8rem "helvetica";
+    text-align: center;
+}
+
+aside{
+    width: 20%;
+    min-width: 100px; 
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    border-radius: 40px;
+    padding: 30px;
+    background-color: rgb(20, 60, 110);
+    font: .8rem "helvetica";
+    color: white;
+}
+#about, #connect{
+    border-radius: 30px 30px 100px 70px;
+    padding: 20px 100px 30px 60px;
+    background-color: rgb(120, 5, 120);
+    box-shadow: 10px 5px 20px rgb(10,110,30);
+    margin: 20px;
+}
+#experience, #skills{
+    /* display: flex; */
+    border-radius: 30px 30px 100px 70px;
+    padding: 20px 100px 30px 60px;
+    background-color: rgb(10,150,70); 
+    box-shadow: 10px 5px 20px rgb(10,110,30);
+    margin: 20px;
+}
+#message_form, #message_post{
+    border-radius: 30px 30px 100px 70px;
+    padding: 20px 100px 30px 60px;
+    background-color: rgb(240,190,20);
+    box-shadow: 10px 5px 20px rgb(10,110,30);
+    font: bold 1.2rem Comic sans MS;
+    color: rgb(100,0,130);
+    margin: 20px;
+}
+#message_form input{
+    background-color: rgb(100,0,130);
+    font: bold "Comic Sans MS";
+    font-size: 1.2rem;
+    color: white;
+}
+#message_form input:focus {
+    background-color: black;
+}
+#message_form textarea{
+    background-color: rgb(100,0,130);
+    font: bold "Comic Sans MS";
+    font-size: 1.2rem;
+    color: white;
+}
+#message_form textarea:focus {
+    background-color: black;
+}
+
+#message_post ul li{
+    display: inline-block;
+    border-radius: 10px;
+    border: .2rem solid rgb(240,0,255);
+    padding: 2rem;
+    background-color: rgb(100,0,130); 
+    font: italic 1rem;
+    color:white;
+    /* text-wrap: wrap; */
+    /* need to make text-wrap work */
+    margin: 1rem -2rem;
+}
+
+button{
+    background-color: rgb(240,0,255);
+    font: bold 1.2rem "Comic Sans MS";
+    padding: .2rem;
+    color: white;
+}
+button:focus{
+    background-color: black;
+}
+
+a:link {
+    color: rgb(60, 200, 180);
+    text-decoration: underline;
+  }
+a:visited {
+    color: rgb(220, 120, 30);
+    text-decoration: none;
+  }
+a:hover {
+    color: rgb(255, 200, 100);
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+  }
+a:focus{
+    color: rgb(255, 200, 100);
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+}
+h2{
+    display: block;
+    border-radius: 10px;
+    padding-left: 2rem;
+    background-color:  rgb(85, 5, 120);
+    font: bold 2rem, sans-serif;
+    color: white;
+    margin-bottom: .3rem;
+}
+
+
+@media screen and (max-width: 600px), (orientation: portrait) {
+    main{
+        width: 96%;
+        margin-left: 2%;
+    }
+    #about, #connect, #experience, #skills, #message_form, #message_post{
+        border-radius: 15px 15px 65px 40px;
+        padding: 6px 35px 8px 25px;
+        margin: 10px;
+    }
+    aside{
+        border-radius: 15px;
+        padding: 15px;
+        position: relative;
+        width: 60%;
+        margin: 15% 5% 5% 15%;
+    }
+}
+
+@media print {
+    main{
+        width: 90%;
+        margin-left: 5%;
+    }
+    #about, #connect, #experience, #skills, #message_form, #message_post, aside{
+        margin: 2rem;
+    }
+    aside{
+        position: relative;
+        width: 90%;
+        margin: 15% 5% 5%;
+    }
+}
+

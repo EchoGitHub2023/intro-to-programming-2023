@@ -18,7 +18,7 @@ for( let i=0 ; i<skillsArr.length ; i++ ){
 }
 
 //  "leave_message" is what I will be adding things to, using DOM manipulation, so I select the form first.
-const messageForm = document.getElementById("leave_message");
+const messageForm = document.getElementById("message_form");
 
 //  addEventListener() There is no "=" equal sign for the method.
 messageForm.addEventListener("submit", (eSubmitMessage) => {
@@ -32,12 +32,12 @@ messageForm.addEventListener("submit", (eSubmitMessage) => {
     // console.log(userName, userEmail, userMessage);
  
     // select the empty <ul></ul> under "Messages" of html; and then create & add <li> into that <ul>
-    const messageList = document.getElementById("messages").querySelector("ul");
+    const messageList = document.getElementById("message_post").querySelector("ul");
     const newMessage = document.createElement("li");
 
     // display the messages in a list.
     newMessage.innerHTML = `
-      <a href = "mailto: userEmail">${userName}</a>
+      <a href="mailto:#userEmail.value">${userName}</a>
       <span>wrote: ${userMessage}</span>`;
       // console.log(messageList);
 
@@ -45,6 +45,7 @@ messageForm.addEventListener("submit", (eSubmitMessage) => {
     messageList.appendChild(newMessage);
 
     // reset the form back to blank.
+    // the .reset function is for form.  I need to select <form>, not <section>, for it to work.
     messageForm.reset();
 
     // make "remove" button.
@@ -64,4 +65,86 @@ messageForm.addEventListener("submit", (eSubmitMessage) => {
 })
 
 
+//  Next step:
+//  Make this work, including change the codes above, save it locally.  Do not push it into lesson-4-3-2.  Do not make commits. Do not merge.
+//  Ask Mentor:
+//  If it's merged, where can I find the older code (the one without "edit/save" button)
+
+
+// Try move some codes out of the function(addEventListener:eSubmitMessage) so it's easier to read.  Put most of the const stuff in the front, so they are available for the function(addEventListener) for RemoveButton, EditButton, and SaveButton.
+// After get the buttons out, seperate two addEventLIstener function to two individule functions, not one nested inside another.
+// eSubmitMessage vs eShowMessages
+// Assign an id to the submit button in html?  Need to select the whole form to grab three things in the form, not just the submit button.
+
+
+
+// // Add "edit" button and "save" button
+// 
+//     // make "edit" button.
+//     const editButton = document.createElement('button');
+//     editButton.type = 'button';
+//     editButton.innerText = 'Edit'
+//     // append "editButton" to each message <li>
+//     newMessage.appendChild(editButton);
+
+//     // make "save" button.
+//     const saveButton = document.createElement('button');
+//     saveButton.type = 'button';
+//     saveButton.innerText = 'Save'
+//     // append "saveButton" to each message <li>
+//     newMessage.appendChild(saveButton);
+
+
+// // addEventListener to removeButton, editButton, saveButton
+
+// //  listen to "click" of Remove Button, remove the removeButton and its parentNode<li> at the same time.
+// removeButton.addEventListener("click", (eRemoveMessage) => {
+//   const entry = removeButton.parentNode;
+//   entry.remove();
+// })
+
+// //  listen to "click" of editButton, change userMessage into a input-text field, get rid of the userMessage, change the editButton to SaveButton.
+// editButton.addEventListener("click", (eEditingMessage) => {
+//   // add a text field for editedMessage, make it starts with the value of userMessage.
+//   const editingMessage = document.createElement("input");
+//   editingMessage.type = "text";
+//   editingMessage.value = `${userMessage}`
+//   // put editedMessage before userMessage in the same node;
+//   insertBefore(editingMessage, userMessage);
+//   // get rid of the userMessage node, so what's left is the new node <editedMessage>.
+//   removeChild(userMessage);
+//   // put SaveButton before editButton;
+//   insertBefore(saveButton, editButton);
+//   // get rid of editButton node, so what's left is the safeButton node.
+//   removeChild(editButton);
+// })
+
+// //  listen to "click" of saveButton, change the input-text field into a editedMessage span, get rid of the editingMessage, change the saveButton back to editButton.
+// editButton.addEventListener("click", (eSaveMessage) => {
+//   // add a span to display edited message, the value of the message is editingMessage.
+//   const editedMessage = document.createElement("span");
+//   editedMessage.value = `${editingMessage}`
+//   // put editedMessage before editingMessage in the same node;
+//   insertBefore(editedMessage, editingMessage);
+//   // get rid of the editingMessage node, so what's left is the new node <editedMessage>.
+//   removeChild(editingMessage);
+//   // put editButton before saveButton;
+//   insertBefore(editButton, saveButton);
+//   // get rid of saveButton node, so what's left is the editButton node.
+//   removeChild(saveButton);
+// })
+
+
+// // hide the message div when there is no message to display.
+// 
+// // add this into addEventListener, put it after reset
+// // (The remove button should have been moved out, becomes part of the displayed messages)
+// messageForm.addEventListener("click", (eShowMessages) => {
+//   document.getElementById("messages").hidden = false;
+// });
+
+
+
+      
+   
 
