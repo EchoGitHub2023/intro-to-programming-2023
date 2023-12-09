@@ -30,16 +30,24 @@ header, footer{
 header p{
     color: white;
 }
-.tabs{
-    /* display: flex; */
-    display: inline-block;
-    width: 120px;
-    height: 40px;
-    text-align: center;
-    /* make the text center vertically in each inline-block */
-    background-color: black;
-    color: white;
+nav{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
 }
+
+.tab{
+        width: 120px;
+        height: 40px;
+        text-align: center;
+        background-color: black;
+        color: white;
+        text-decoration: none;
+}
+
+  
+
 footer q{
     color: rgb(240,160,200);
 }
@@ -73,12 +81,17 @@ aside{
     margin: 20px;
 }
 #experience, #skills{
-    /* display: flex; */
     border-radius: 30px 30px 100px 70px;
     padding: 20px 100px 30px 60px;
     background-color: rgb(10,150,70); 
     box-shadow: 10px 5px 20px rgb(10,110,30);
     margin: 20px;
+}
+#experience{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 #message_form, #message_post{
     border-radius: 30px 30px 100px 70px;

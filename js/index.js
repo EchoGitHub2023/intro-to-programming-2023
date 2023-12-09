@@ -37,7 +37,7 @@ messageForm.addEventListener("submit", (eSubmitMessage) => {
 
     // display the messages in a list.
     newMessage.innerHTML = `
-      <a href="mailto:#userEmail.value">${userName}</a>
+      <a href="mailto:${userEmail}">${userName}</a>
       <span>wrote: ${userMessage}</span>`;
       // console.log(messageList);
 
@@ -60,10 +60,26 @@ messageForm.addEventListener("submit", (eSubmitMessage) => {
     removeButton.addEventListener("click", (eRemoveMessage) => {
       const entry = removeButton.parentNode;
       entry.remove();
+      if(messageList.hasChildNodes() === false){
+        document.getElementById("message_post").hidden= true;
+      };
     })
+
+    // trying to hide the whole section of "message_post" when there is no message to post.
+    if(messageList.hasChildNodes() === true){
+      document.getElementById("message_post").hidden= false;
+    }
+
+
 
 })
 
+// without clickevent, the hidden is true.
+const messageList2 = document.getElementById("message_post").querySelector("ul");
+// console.log(messageList2.hasChildNodes() === false);
+if(messageList2.hasChildNodes() === false){
+  document.getElementById("message_post").hidden= true;
+}
 
 //  Next step:
 //  Make this work, including change the codes above, save it locally.  Do not push it into lesson-4-3-2.  Do not make commits. Do not merge.
@@ -133,6 +149,11 @@ messageForm.addEventListener("submit", (eSubmitMessage) => {
 //   // get rid of saveButton node, so what's left is the editButton node.
 //   removeChild(saveButton);
 // })
+
+
+// if(messageList.hasChildNodes() === false){
+//   document.getElementById("message_post").hidden= true;
+// }
 
 
 // // hide the message div when there is no message to display.
