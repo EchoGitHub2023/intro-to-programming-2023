@@ -51,10 +51,11 @@ nav{
 }
 
 #tab1, #tab2, #tab3{
-    display: block;
-    height: 40px;
+    display: inline-block;
+    height: 3rem;
     padding: 1rem;
     border-radius: 10px;
+    border: solid rgb(218, 225, 225);
     margin-left: 10px;
     text-align: center;
     background-color: rgb(30, 100, 140);
@@ -84,6 +85,7 @@ aside{
     bottom: 40px;
     right: 40px;
     border-radius: 40px;
+    border: solid rgb(218, 225, 225);
     padding: 20px;
     /* rgb(30, 100, 140) */
     background-color: rgb(30, 100, 140);
@@ -158,7 +160,7 @@ aside{
     color:white;
     /* text-wrap: wrap; */
     /* need to make text-wrap work */
-    margin: 1rem -2rem;
+    margin: 1rem 0rem;
 }
 
 button{
