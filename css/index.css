@@ -125,6 +125,12 @@ aside{
 /* #mForm_label{
     font: bold 3rem;
 } */
+#message_form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
 #message_form input{
     background-color: rgb(100,0,130);
     font: bold "Comic Sans MS";
