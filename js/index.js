@@ -20,9 +20,12 @@ for( let i=0 ; i<skillsArr.length ; i++ ){
 //  "leave_message" is what I will be adding things to, using DOM manipulation, so I select the form first.
 const messageForm = document.getElementById("message_form");
 
+
+
 //  addEventListener() There is no "=" equal sign for the method.
 messageForm.addEventListener("submit", (eSubmitMessage) => {
     eSubmitMessage.preventDefault();
+
     // grab name, email, message from whatever the user typed into their browser.
     // use (.value) to grab the value of each field.
     const userName = eSubmitMessage.target.userName.value;
@@ -32,8 +35,8 @@ messageForm.addEventListener("submit", (eSubmitMessage) => {
     // select the empty <ul></ul> under "Messages" of html; and then create & add <li> into that <ul>
     const messageList = document.getElementById("message_post").querySelector("ul");
     const newMessage = document.createElement("li");
+    
     // display the messages in a list.
-
     newMessage.innerHTML = 
     `<a href="mailto:${userEmail}">${userName}</a>`
     + `<span>wrote: ${userMessage}</span>`;
@@ -45,39 +48,68 @@ messageForm.addEventListener("submit", (eSubmitMessage) => {
     // the .reset function is for form.  I need to select <form>, not <section>, for it to work.
     messageForm.reset();
 
-
-    
+    // make "save" button, append to each <li>
+    const saveButton = document.createElement('button');
+    saveButton.type = 'button';
+    saveButton.innerText = 'Save'
+    newMessage.appendChild(saveButton);
     // make "edit" button, append to each <li>
     const editButton = document.createElement('button');
     editButton.type = 'button';
     editButton.innerText = 'Edit'
     newMessage.appendChild(editButton);
-    //  Click "Edit", change editButton to saveButton.
-    editButton.addEventListener("click", (eEditingMessage) => {
-      // define li: the parent node of edit Button.
-      li = editButton.parentNode;
-      // make "save" button.
-      const saveButton = document.createElement('button');
-      saveButton.type = 'button';
-      saveButton.innerText = 'Save'
-      // insert save before edit.
-      li.insertBefore(saveButton, editButton);
-      // get rid of edit button.
-      li.removeChild(editButton);
-    })
-      
-
-
     // make "remove" button, append to each <li>
     const removeButton = document.createElement('button');
     removeButton.type = 'button';
     removeButton.innerText = 'Remove'
     newMessage.appendChild(removeButton);
+    // hide saveButton
+    saveButton.hidden = true;
+
+    // make this input global (within sumbitButton) so I can use it for both "edit" event and "save" event.
+    const editingMessage = document.createElement("input");
+
+    //  listen to "click" of editButton, change userMessage into a input-text field, get rid of the userMessage, change the editButton to SaveButton.
+    editButton.addEventListener("click", (eEditingMessage) => {
+      // define li: the parent node of edit Button.
+      const li = editButton.parentNode;
+      // add a text field for editedMessage, make it starts with the value of userMessage.
+      // const editingMessage = document.createElement("input");
+      editingMessage.type = "text";
+      editingMessage.value = `${userMessage}`
+      // append the input to <li>newMessage, put it before saveButton
+      li.appendChild(editingMessage);
+      li.insertBefore(editingMessage, saveButton);
+      // hide edit button, un-hide save button
+      editButton.hidden = true;
+      saveButton.hidden = false;
+      // hide newMessage
+      newMessage.hidden = true;  //   ????? doesn't work.  newMessage is li the parent node.
+    })
+
+    // Listen to "save", make "input" become "span", change save to edit, get rid of input-edit field
+    saveButton.addEventListener("click", (eSavingMessage) => {
+      // define li2: the parent node of save Button newMessage<li>
+      const li2 = saveButton.parentNode;
+      // add a span, display the edited message from the edit-input field
+      const savingMessage = document.createElement("span");
+      savingMessage.innerHTML = 
+      `<a href="mailto:${userEmail}">${userName}</a>
+      <span>wrote: ${editingMessage.value} (edited)</span>`;
+      // put savingMessage before save Button
+      li2.insertBefore(savingMessage, saveButton);
+      // hide save button, un-hide edit button
+      saveButton.hidden = true;
+      editButton.hidden = false;
+      // git rid of input field
+      li2.removeChild(editingMessage);
+      //  ???? still need to hide/get rid of the original posting <li2>newMessage  ???
+    })
 
     //  listen to "click" of Remove Button, remove the removeButton and its parentNode<li> at the same time.
     removeButton.addEventListener("click", (eRemoveMessage) => {
-      const entry = removeButton.parentNode;
-      entry.remove();
+      const li3 = removeButton.parentNode;
+      li3.remove();
       if(messageList.hasChildNodes() === false){
         document.getElementById("message_post").hidden= true;
       };
@@ -88,7 +120,7 @@ messageForm.addEventListener("submit", (eSubmitMessage) => {
       document.getElementById("message_post").hidden= false;
     }
 
-})
+}) //end of "submit" eventListener
 
 // without submit clickevent, the hidden is true. const another messageList(2) because it's outside submit click event, so it's less confusing.
 const messageList2 = document.getElementById("message_post").querySelector("ul");
@@ -97,7 +129,8 @@ if(messageList2.hasChildNodes() === false){
 }
 
 
-
+// make an empty <li> for each posting, and then
+// make newMessage a <span> and append it to <li>, so the <span> can be deleted without deleting <li>  lines 87, 106
 
 
 
@@ -115,54 +148,6 @@ if(messageList2.hasChildNodes() === false){
 // The button is only needed on large screen.  Get rid of the button in @media.
 
       
-   
-
-//     // make "edit" button.
-//     const editButton = document.createElement('button');
-//     editButton.type = 'button';
-//     editButton.innerText = 'Edit'
-//     // append "editButton" to each message <li>
-//     newMessage.appendChild(editButton);
-
-//     // make "save" button.
-//     const saveButton = document.createElement('button');
-//     saveButton.type = 'button';
-//     saveButton.innerText = 'Save'
-//     // append "saveButton" to each message <li>
-//     newMessage.appendChild(saveButton);
-
-// //  listen to "click" of editButton, change userMessage into a input-text field, get rid of the userMessage, change the editButton to SaveButton.
-// editButton.addEventListener("click", (eEditingMessage) => {
-//   // add a text field for editedMessage, make it starts with the value of userMessage.
-//   const editingMessage = document.createElement("input");
-//   editingMessage.type = "text";
-//   editingMessage.value = `${userMessage}`
-//   // put editedMessage before userMessage in the same node;
-//   insertBefore(editingMessage, userMessage);
-//   // get rid of the userMessage node, so what's left is the new node <editedMessage>.
-//   removeChild(userMessage);
-//   // put SaveButton before editButton;
-//   insertBefore(saveButton, editButton);
-//   // get rid of editButton node, so what's left is the safeButton node.
-//   removeChild(editButton);
-// })
-
-// //  listen to "click" of saveButton, change the input-text field into a editedMessage span, get rid of the editingMessage, change the saveButton back to editButton.
-// editButton.addEventListener("click", (eSaveMessage) => {
-//   // add a span to display edited message, the value of the message is editingMessage.
-//   const editedMessage = document.createElement("span");
-//   editedMessage.value = `${editingMessage}`
-//   // put editedMessage before editingMessage in the same node;
-//   insertBefore(editedMessage, editingMessage);
-//   // get rid of the editingMessage node, so what's left is the new node <editedMessage>.
-//   removeChild(editingMessage);
-//   // put editButton before saveButton;
-//   insertBefore(editButton, saveButton);
-//   // get rid of saveButton node, so what's left is the editButton node.
-//   removeChild(saveButton);
-// })
-
-// Try append both buttons save and edit, then make one of them hidden.
 
 
 
