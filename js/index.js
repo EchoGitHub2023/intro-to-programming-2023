@@ -17,10 +17,25 @@ for( let i=0 ; i<skillsArr.length ; i++ ){
     // console.log(skillsArr[i]);
 }
 
+
+// make nav stick. (need to move nav out of header)
+window.onscroll = function() {myFunction()};
+
+const header = document.querySelector("nav");
+const sticky = nav.offsetTop;
+
+function myFunction() {
+  if (window.scrollY > sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
+}
+
+
+
 //  "leave_message" is what I will be adding things to, using DOM manipulation, so I select the form first.
 const messageForm = document.getElementById("message_form");
-
-
 
 //  addEventListener() There is no "=" equal sign for the method.
 messageForm.addEventListener("submit", (eSubmitMessage) => {
@@ -129,10 +144,42 @@ if(messageList2.hasChildNodes() === false){
 }
 
 
+const githubRequest = new XMLHttpRequest();
+
+githubRequest.addEventListener("load", (event) => {
+  // addEventListner needs to be method of githubRequest.
+  const repositories = JSON.parse(githubRequest.response);
+  console.log(typeof repositories);
+  console.log(repositories);
+
+  const projectSection = document.getElementById("projects");
+  const projectList = projectSection.querySelector("ul");
+  for ( let i=0 ; i<repositories.length ; i++ ){
+    let project = repositories[i];
+    const projectItem = document.createElement("li");
+    projectItem.innerText = project.name;
+    projectList.appendChild(projectItem);
+  }
+});
+
+githubRequest.open('GET', 'https://api.github.com/users/EchoGitHub2023/repos');
+githubRequest.send();
+
+
+
+
+// make the "project" show the dummy array, not my whole github repo.
+// make the following into an api, JSON it, and list the titles.
+// const oldProjects = [
+// {"title": "Acrobat Tarot", "year": "2023"},
+// {"title": "Town with Clouds", "year: "2023"},
+// {"title": "Neon Journey", "year": "2023"},
+// {"title": "Welcome to Kindergarten", "year": "2020"},
+// {"title": "Save Leigh Creekside Park", "year": "2017"},
+// ];
+
 // make an empty <li> for each posting, and then
 // make newMessage a <span> and append it to <li>, so the <span> can be deleted without deleting <li>  lines 87, 106
-
-
 
 
 // consider adding a button to <aside> to tuck away the floating window.
@@ -148,6 +195,6 @@ if(messageList2.hasChildNodes() === false){
 // The button is only needed on large screen.  Get rid of the button in @media.
 
       
-
+// The "sticky" header covers the top of the page.
 
 

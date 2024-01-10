@@ -26,10 +26,12 @@ header, footer{
     font: 1rem "helvetica";
 }
 header{
+    /* position: sticky;
+    top: 0;
+    z-index: 100; */
     position: fixed;
     margin: 0px;
     width: 100%;
-    /* height: 10rem; */
 }
 #under_header{
     height: 10rem;  
@@ -49,7 +51,6 @@ nav{
     justify-content: flex-end;
     margin-top: -2rem;
 }
-
 #tab1, #tab2, #tab3{
     display: inline-block;
     height: 3rem;
@@ -62,6 +63,13 @@ nav{
     color: rgb(218, 225, 225);
     text-decoration: none;
 }
+
+/*  */
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
 
   
 
@@ -100,14 +108,14 @@ aside{
     margin: 20px;
 }
 
-#experience, #skills{
+#experience, #skills, #projects{
     border-radius: 30px 30px 100px 70px;
     padding: 20px 100px 30px 60px;
     background-color: rgb(15,135,45);
     box-shadow: 10px 5px 20px rgb(10,110,30);
     margin: 20px;
 }
-#experience{
+#experience, #projects{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -228,9 +236,9 @@ h2{
         padding: .6rem;
         margin: .2rem;
     }
-    #about, #connect, #experience, #skills, #message_form, #message_post{
+    #about, #connect, #experience, #skills, #projects, #message_form, #message_post{
         border-radius: 15px 15px 65px 40px;
-        padding: 6px 35px 8px 25px;
+        padding: 6px 35px 20px 25px;
         margin: 10px;
     }
     aside{
@@ -247,7 +255,7 @@ h2{
         width: 90%;
         margin-left: 5%;
     }
-    #about, #connect, #experience, #skills, #message_form, #message_post, aside{
+    #about, #connect, #experience, #skills, #projects, #message_form, #message_post {
         margin: 2rem;
     }
     aside{
