@@ -17,10 +17,24 @@ for( let i=0 ; i<skillsArr.length ; i++ ){
     // console.log(skillsArr[i]);
 }
 
+// make nav stick.
+window.onscroll = function() {myFunction()};
+const navTabs = document.querySelector("nav");
+const sticky = navTabs.offsetTop;
+function myFunction() {
+  if (window.scrollY > sticky) {
+    navTabs.classList.add("sticky");
+  } else {
+    navTabs.classList.remove("sticky");
+  }
+}
+
+
+
+
+
 //  "leave_message" is what I will be adding things to, using DOM manipulation, so I select the form first.
 const messageForm = document.getElementById("message_form");
-
-
 
 //  addEventListener() There is no "=" equal sign for the method.
 messageForm.addEventListener("submit", (eSubmitMessage) => {
@@ -39,7 +53,7 @@ messageForm.addEventListener("submit", (eSubmitMessage) => {
     // display the messages in a list.
     newMessage.innerHTML = 
     `<a href="mailto:${userEmail}">${userName}</a>`
-    + `<span>wrote: ${userMessage}</span>`;
+    + `<span> wrote: ${userMessage}</span>`;
 
     //append newMessage<li> to messageList<ul>, one at a time, each append is a new <li>
     messageList.appendChild(newMessage);
@@ -74,36 +88,40 @@ messageForm.addEventListener("submit", (eSubmitMessage) => {
       // define li: the parent node of edit Button.
       const li = editButton.parentNode;
       // add a text field for editedMessage, make it starts with the value of userMessage.
-      // const editingMessage = document.createElement("input");
       editingMessage.type = "text";
-      editingMessage.value = `${userMessage}`
-      // append the input to <li>newMessage, put it before saveButton
+      editingMessage.value = `${newMessage.querySelector("span").innerHTML}`
+      // append the textfield to <li> newMessage, put it before saveButton
       li.appendChild(editingMessage);
       li.insertBefore(editingMessage, saveButton);
       // hide edit button, un-hide save button
       editButton.hidden = true;
       saveButton.hidden = false;
-      // hide newMessage
-      newMessage.hidden = true;  //   ????? doesn't work.  newMessage is li the parent node.
     })
 
-    // Listen to "save", make "input" become "span", change save to edit, get rid of input-edit field
+    // Listen to "save", change the value of newMessage(the original message)
     saveButton.addEventListener("click", (eSavingMessage) => {
-      // define li2: the parent node of save Button newMessage<li>
+      // define li2: the parent node of save Button newMessage<li>; call it li2 for saveButton 
       const li2 = saveButton.parentNode;
-      // add a span, display the edited message from the edit-input field
-      const savingMessage = document.createElement("span");
-      savingMessage.innerHTML = 
-      `<a href="mailto:${userEmail}">${userName}</a>
-      <span>wrote: ${editingMessage.value} (edited)</span>`;
-      // put savingMessage before save Button
-      li2.insertBefore(savingMessage, saveButton);
+      
+      // change the value of <span>, not the whole <li>.  This way I don't lose the edit, save, and remove buttons.
+      li2.querySelector("span").innerHTML = 
+      ` edited: ${editingMessage.value} (EDITED)`;
+
+      // // This also works, but a bit lengthy, unessasary: change the value to edited message.
+      // // Since the entire <li> is changed, I lose everything appended to that <li>, and I'll need to re-append the save, edit, and remove buttons.
+      // li2.innerHTML = 
+      // `<a href="mailto:${userEmail}">${userName}</a>`
+      // + `<span> wrote: ${editingMessage.value} </span>`
+      // + `<span>  (EDITED) </span>`;
+      // newMessage.appendChild(saveButton);
+      // newMessage.appendChild(editButton);
+      // newMessage.appendChild(removeButton);
+
       // hide save button, un-hide edit button
       saveButton.hidden = true;
       editButton.hidden = false;
       // git rid of input field
       li2.removeChild(editingMessage);
-      //  ???? still need to hide/get rid of the original posting <li2>newMessage  ???
     })
 
     //  listen to "click" of Remove Button, remove the removeButton and its parentNode<li> at the same time.
@@ -129,8 +147,34 @@ if(messageList2.hasChildNodes() === false){
 }
 
 
-// make an empty <li> for each posting, and then
-// make newMessage a <span> and append it to <li>, so the <span> can be deleted without deleting <li>  lines 87, 106
+// Populate "projects" with api
+const githubRequest = new XMLHttpRequest();
+
+githubRequest.addEventListener("load", (event) => {
+  // addEventListner needs to be method of githubRequest.
+  const repositories = JSON.parse(githubRequest.response);
+  console.log(typeof repositories);
+  console.log(repositories);
+  const projectSection = document.getElementById("projects");
+  const projectList = projectSection.querySelector("ul");
+  // const projectList = projectSection.getElementById("ajax");
+  for ( let i=0 ; i<repositories.length ; i++ ){
+    let project = repositories[i];
+    if (project.name === "-intro-to-programming-section-5-Debugging_extraToBeDeleted"){
+      continue;
+    };
+    if (project.name === "intro-to-programming-5-Debug"){
+      continue;
+    };
+    const projectItem = document.createElement("li");
+    projectItem.innerText = project.name;
+    projectList.appendChild(projectItem);
+  }
+});
+
+githubRequest.open('GET', 'https://api.github.com/users/EchoGitHub2023/repos');
+githubRequest.send();
+
 
 
 
@@ -141,13 +185,12 @@ if(messageList2.hasChildNodes() === false){
 // Listen click(js), change (position: relative) in css (inline css? in js??), make (shrink) button disappear(js).
 // use a <style> tag to inject an actual string of CSS into the DOM.
 // if(button click){
-//   position: relative; (cs)
-//   (remove button) display: none; (cs)
+//   position: relative; (css)
+//   (remove button) display: none; (css)
 //   remove/hide button; (js)
 // }
 // The button is only needed on large screen.  Get rid of the button in @media.
 
-      
 
 
 
