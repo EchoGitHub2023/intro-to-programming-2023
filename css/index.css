@@ -87,10 +87,8 @@ aside{
     right: 40px;
     border-radius: 40px;
     border: solid 4px rgb(225, 110, 30);
-    /* border: solid rgb(218, 225, 225); */
     padding: 20px;
-    background-color: rgb(15, 60, 120);
-    /* background-color: rgb(30, 100, 140); */
+    background-color: rgb(3, 70, 20);
     font: .8rem "helvetica";
     color: rgb(218, 225, 225);
 }
@@ -157,19 +155,25 @@ aside{
 #message_post ul li{
     display: inline-block;
     border-radius: 10px;
-    border: .2rem solid rgb(240,0,255);
+    /* border: .4rem solid rgb(60,160,5); */
+    border: .3rem solid rgb(250,5,125);
+    /* border: .2rem solid rgb(240,0,255); */
+    /* border: .2rem solid rgb(240,0,255); */
     padding: 2rem;
     background-color: rgb(100,0,130); 
     font: italic 1rem;
-    color:white;
+    color:rgb(218, 225, 225);
     margin: 1rem 0rem;
 }
 
 button{
-    background-color: rgb(240,0,255);
+    /* background-color: rgb(60,160,5); */
+    background-color: rgb(250,5,125);
+    /* background-color: rgb(255,0,120); */
+    /* background-color: rgb(240,0,255); */
     font: bold 1.2rem "Comic Sans MS";
     padding: .2rem;
-    color: white;
+    color: rgb(218, 225, 225);
 }
 button:focus{
     background-color: black;
