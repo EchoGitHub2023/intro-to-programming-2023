@@ -147,49 +147,31 @@ if(messageList2.hasChildNodes() === false){
 }
 
 
-// Populate "projects" with api
-const githubRequest = new XMLHttpRequest();
 
-githubRequest.addEventListener("load", (event) => {
-  // addEventListner needs to be method of githubRequest.
-  const repositories = JSON.parse(githubRequest.response);
-  console.log(typeof repositories);
-  console.log(repositories);
-  const projectSection = document.getElementById("projects");
-  const projectList = projectSection.querySelector("ul");
-  // const projectList = projectSection.getElementById("ajax");
-  for ( let i=0 ; i<repositories.length ; i++ ){
-    let project = repositories[i];
-    if (project.name === "-intro-to-programming-section-5-Debugging_extraToBeDeleted"){
-      continue;
-    };
-    if (project.name === "intro-to-programming-5-Debug"){
-      continue;
-    };
-    const projectItem = document.createElement("li");
-    projectItem.innerText = project.name;
-    projectList.appendChild(projectItem);
-  }
-});
-
-githubRequest.open('GET', 'https://api.github.com/users/EchoGitHub2023/repos');
-githubRequest.send();
-
-
-
-
-
-// consider adding a button to <aside> to tuck away the floating window.
-// <aside> background color dark green, orange border.
-// make (shrink) button in js, createElement button, append it to <aside>.
-// Listen click(js), change (position: relative) in css (inline css? in js??), make (shrink) button disappear(js).
-// use a <style> tag to inject an actual string of CSS into the DOM.
-// if(button click){
-//   position: relative; (css)
-//   (remove button) display: none; (css)
-//   remove/hide button; (js)
-// }
-// The button is only needed on large screen.  Get rid of the button in @media.
+// populate "project" with GitHub API via Fetch
+fetch('https://api.github.com/users/EchoGitHub2023/repos')
+  .then(repoF => repoF.json())  //turn string into database
+  .then(
+    repoF2 => {
+      console.log(repoF2);
+      // repoF and repoF2 are the names I give to the database.  The two variable names refer to the same json database.  I just name them seperatly to reduce confusion.
+      const projectSection = document.getElementById("projects");
+      const projectList = projectSection.querySelector("ul");
+      for ( let i=0 ; i<repoF2.length ; i++ ){
+        let project = repoF2[i];
+        const projectItem = document.createElement("li");
+        if (project.name === "-intro-to-programming-section-5-Debugging_extraToBeDeleted"){
+          continue;
+          };
+        if (project.name === "intro-to-programming-5-Debug"){
+          continue;
+          };
+        projectItem.innerText = project.name;
+        projectList.appendChild(projectItem);
+      }
+    }
+  )
+  .catch(error => console.log("Oops... not quite there yet.  --", error));
 
 
 
