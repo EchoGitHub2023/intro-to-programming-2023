@@ -5,10 +5,10 @@ let thisYear = today.getFullYear();
 
 // populate copyright statement at the footer with current year.
 yearDynamic = document.getElementById("copyright");
-yearDynamic.innerText = `copyright  ${thisYear}  Echo Wang`;
+yearDynamic.innerHTML = `&copy; ${thisYear}  Echo Wang`;
 
 // populate the "skill" section with js, add <li> to <ul>
-let skillsArr = ["html","css","javascript"]
+let skillsArr = ["html","css","javascript","Squarespace"]
 let skillsList = document.getElementById("skills").querySelector("ul")
 for( let i=0 ; i<skillsArr.length ; i++ ){
     let skillListItems = document.createElement("li");
@@ -28,10 +28,6 @@ function myFunction() {
     navTabs.classList.remove("sticky");
   }
 }
-
-
-
-
 
 //  "leave_message" is what I will be adding things to, using DOM manipulation, so I select the form first.
 const messageForm = document.getElementById("message_form");
@@ -107,16 +103,6 @@ messageForm.addEventListener("submit", (eSubmitMessage) => {
       li2.querySelector("span").innerHTML = 
       ` edited: ${editingMessage.value} (EDITED)`;
 
-      // // This also works, but a bit lengthy, unessasary: change the value to edited message.
-      // // Since the entire <li> is changed, I lose everything appended to that <li>, and I'll need to re-append the save, edit, and remove buttons.
-      // li2.innerHTML = 
-      // `<a href="mailto:${userEmail}">${userName}</a>`
-      // + `<span> wrote: ${editingMessage.value} </span>`
-      // + `<span>  (EDITED) </span>`;
-      // newMessage.appendChild(saveButton);
-      // newMessage.appendChild(editButton);
-      // newMessage.appendChild(removeButton);
-
       // hide save button, un-hide edit button
       saveButton.hidden = true;
       editButton.hidden = false;
@@ -146,27 +132,33 @@ if(messageList2.hasChildNodes() === false){
   document.getElementById("message_post").hidden= true;
 }
 
-
-
 // populate "project" with GitHub API via Fetch
 fetch('https://api.github.com/users/EchoGitHub2023/repos')
   .then(repoF => repoF.json())  //turn string into database
   .then(
     repoF2 => {
-      console.log(repoF2);
-      // repoF and repoF2 are the names I give to the database.  The two variable names refer to the same json database.  I just name them seperatly to reduce confusion.
+      // console.log(repoF2);
+      // repoF and repoF2 are the names I give to the database.  The two variable names refer to the same json database.  I name them seperatly to reduce confusion.
       const projectSection = document.getElementById("projects");
       const projectList = projectSection.querySelector("ul");
       for ( let i=0 ; i<repoF2.length ; i++ ){
         let project = repoF2[i];
         const projectItem = document.createElement("li");
+        
+        // append a to li, set <a> and <href> using project.name
+        const projectName = document.createElement("a");
+        projectItem.appendChild(projectName);
+        projectName.innerHTML = project.name;
+        projectName.href = ` https://github.com/EchoGitHub2023/${project.name} `;
+        projectName.target = "_blank";
+
         if (project.name === "-intro-to-programming-section-5-Debugging_extraToBeDeleted"){
           continue;
           };
         if (project.name === "intro-to-programming-5-Debug"){
           continue;
           };
-        projectItem.innerText = project.name;
+      
         projectList.appendChild(projectItem);
       }
     }

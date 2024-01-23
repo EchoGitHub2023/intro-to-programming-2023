@@ -40,11 +40,11 @@ nav{
     flex-wrap: wrap;
     align-items: center;
     justify-content: flex-end;
-    background-color: rgba(15, 60, 120, 0.75);
+    background-color: rgba(15, 60, 120, 0.65);
     padding: 1rem;
     font: 1rem "helvetica";
 }
-#tab1, #tab2, #tab3{
+#navTab{
     display: inline-block;
     height: 3rem;
     padding: 1rem;
@@ -155,10 +155,7 @@ aside{
 #message_post ul li{
     display: inline-block;
     border-radius: 10px;
-    /* border: .4rem solid rgb(60,160,5); */
     border: .3rem solid rgb(250,5,125);
-    /* border: .2rem solid rgb(240,0,255); */
-    /* border: .2rem solid rgb(240,0,255); */
     padding: 2rem;
     background-color: rgb(100,0,130); 
     font: italic 1rem;
@@ -167,10 +164,7 @@ aside{
 }
 
 button{
-    /* background-color: rgb(60,160,5); */
     background-color: rgb(250,5,125);
-    /* background-color: rgb(255,0,120); */
-    /* background-color: rgb(240,0,255); */
     font: bold 1.2rem "Comic Sans MS";
     padding: .2rem;
     color: rgb(218, 225, 225);
